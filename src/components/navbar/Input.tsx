@@ -1,15 +1,14 @@
 import React, { forwardRef } from 'react';
-
 interface InputProps {
-  className: string;
+  className?: string;
   id?: string;
   type?: string;
   placeholder?: string;
   labelClassName?: string;
-  labelText: string;
+  labelText?: string;
   value?: string; // Controlled value
   defaultValue?: string; // Uncontrolled value
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -28,7 +27,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     return (
-      <div className="mb-3">
+      <div>
         {labelText && (
           <label htmlFor={id} className={labelClassName}>
             {labelText}
