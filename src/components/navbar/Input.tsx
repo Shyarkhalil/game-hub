@@ -4,6 +4,8 @@ interface InputProps {
   id?: string;
   type?: string;
   placeholder?: string;
+  role?: string;
+  checked?: boolean;
   labelClassName?: string;
   labelText?: string;
   value?: string; // Controlled value
@@ -17,6 +19,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
       id,
       type = 'text',
+      role,
+      checked,
       placeholder,
       labelClassName,
       labelText,
@@ -27,12 +31,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     return (
-      <div>
-        {labelText && (
-          <label htmlFor={id} className={labelClassName}>
-            {labelText}
-          </label>
-        )}
+      <div className="input-label-container">
         <input
           ref={ref} //Forward the ref from the parent to the input element
           type={type}
@@ -41,7 +40,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           placeholder={placeholder}
           {...(value !== undefined ? { value } : { defaultValue })} // Conditional logic to prevent both value and defaultValue
           onChange={onChange}
+          role={role}
+          checked={checked}
         />
+        {labelText && (
+          <label htmlFor={id} className={labelClassName}>
+            {labelText}
+          </label>
+        )}
       </div>
     );
   }
