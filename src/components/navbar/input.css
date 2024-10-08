@@ -4,19 +4,21 @@
   width: 100%;
   justify-content: space-between;
 }
-
+/* Input container to hold input and icon */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 .input-game {
   background-color: #676767;
   border: none;
   border-radius: 16px;
   width: 100%;
   height: 28px;
-}
-/* Input container to hold input and icon */
-.input-container {
-  position: relative;
-  display: flex;
-  align-items: center;
+  padding-left: 33px;
+  flex-grow: 1;
+  width: 100%;
 }
 /* Style the search icon */
 .search-icon {
@@ -39,9 +41,8 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-
 .toggle-switch:checked {
-  background-color: #4caf50;
+  background-color: #78e298;
 }
 
 .toggle-switch::before {
@@ -69,10 +70,12 @@
   align-self: center;
   color: white;
   font-size: 10px;
+  font-family: sans-serif;
 }
 
 .light-mode-label{
   align-self: center;
   color: rgb(52, 51, 51);
   font-size: 10px;
+  font-family: sans-serif;
 }

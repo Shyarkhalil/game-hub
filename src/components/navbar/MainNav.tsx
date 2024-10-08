@@ -5,12 +5,17 @@ import Input from './Input';
 import './input.css';
 interface MainNaveProps {
   onToggleChange: () => void;
+  handleSearch: (searchTerm: string) => void; // Expecting a string argument
 }
-const MainNav: React.FC<MainNaveProps> = ({ onToggleChange }) => {
-  const [isToggled, setToggle] = useState(false);
+const MainNav: React.FC<MainNaveProps> = ({ onToggleChange, handleSearch }) => {
+  const [isToggled, setToggle] = useState(true);
   const handleToggle = () => {
     setToggle((prevState) => !prevState);
     onToggleChange();
+  };
+
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearch(target.value);
   };
   return (
     <nav className="navbar-container">
@@ -22,7 +27,7 @@ const MainNav: React.FC<MainNaveProps> = ({ onToggleChange }) => {
       </div>
       <div className="navbar-input">
         <div className="input-container">
-          <Input className="input-game" />
+          <Input className="input-game" onChange={handleChange} />
           <FaSearch className="search-icon" />
         </div>
       </div>
