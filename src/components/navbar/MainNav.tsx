@@ -6,8 +6,13 @@ import './input.css';
 interface MainNaveProps {
   onToggleChange: () => void;
   handleSearch: (searchTerm: string) => void; // Expecting a string argument
+  searchTerm: string; // New prop to hold the current search term
 }
-const MainNav: React.FC<MainNaveProps> = ({ onToggleChange, handleSearch }) => {
+const MainNav: React.FC<MainNaveProps> = ({
+  onToggleChange,
+  handleSearch,
+  searchTerm,
+}) => {
   const [isToggled, setToggle] = useState(true);
   const handleToggle = () => {
     setToggle((prevState) => !prevState);
@@ -15,7 +20,7 @@ const MainNav: React.FC<MainNaveProps> = ({ onToggleChange, handleSearch }) => {
   };
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    handleSearch(target.value);
+    handleSearch(target.value); // Update the search term in App component
   };
   return (
     <nav className="navbar-container">
@@ -26,7 +31,12 @@ const MainNav: React.FC<MainNaveProps> = ({ onToggleChange, handleSearch }) => {
         />
       </div>
       <div className="input-container">
-        <Input className="input-game" onChange={handleChange} value="Search" />
+        <Input
+          className="input-game"
+          onChange={handleChange}
+          value={searchTerm}
+          placeholder="Search"
+        />
         <FaSearch className="search-icon" />
       </div>
       <div className="toggle-button">

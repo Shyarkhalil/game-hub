@@ -14,6 +14,7 @@ function App() {
       <MainNav
         onToggleChange={onToggleBackground}
         handleSearch={setSearchTerm}
+        searchTerm={searchTerm}
       />
       <GameGrid searchTerm={searchTerm} darkMode={isDarkMode} />
     </div>

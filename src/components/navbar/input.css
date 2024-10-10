@@ -21,10 +21,10 @@
 }
 
 .input-game {
+  color:white;
   padding-left: 33px;
   background-color: #505154;
   border: none;
-  color:aliceblue;
   border-radius: 16px;
   height: 28px;
   width: 100%; /* Default width for larger screens */
@@ -34,6 +34,11 @@
   background-color: #555555;
   transition: background-color 0.3s ease-in-out;
 }
+
+.input-game::placeholder {
+  color: #cccccc; /* Light gray for placeholder text */
+}
+
 
 /* On small screens, set the width to 40vw */
 @media (max-width: 325px) {
