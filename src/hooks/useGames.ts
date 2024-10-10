@@ -16,8 +16,9 @@ interface FetchGameResponse {
 const useGames = (searchTerm: string) => {
   const [games, setGames] = useState<Game[]>([]); // Typing the games state as an array of ResultProps
   const [error, setError] = useState<string>(''); // Typing error as a string
-
+  const [isLoading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     const controller = new AbortController();
     apiClient
       .get<FetchGameResponse>('/games', {
@@ -28,15 +29,17 @@ const useGames = (searchTerm: string) => {
       })
       .then(({ data }) => {
         setGames(data.results); // Make sure to check if data structure has `results`
+        setLoading(false);
       })
       .catch((err) => {
-        if (err instanceof CanceledError) return;
+        if (err instanceof CanceledError) return; // Ignore canceled requests
         setError(err.message);
+        setLoading(false);
       });
     return () => controller.abort(); // Cancel the request on cleanup
-  }, [searchTerm]);
+  }, [searchTerm]); // Will rerender the component when searchTerm is typed
 
-  return { error, games };
+  return { error, games, isLoading };
 };
 
 export default useGames;
