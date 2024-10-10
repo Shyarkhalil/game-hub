@@ -9,7 +9,7 @@ const GameGrid: React.FC<GameGrindProps> = ({ searchTerm, darkMode }) => {
   const { games, error } = useGames(searchTerm);
   return (
     <>
-      {error && <p className="error-message">{error}</p>}
+      {error && <h1 className="error-message">{error}</h1>}
       {!error && games.length === 0 && <p>No games found.</p>}
       <ul className="game-container">
         {games.map((game) => (

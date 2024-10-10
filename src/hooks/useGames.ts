@@ -1,3 +1,4 @@
+import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-services';
 interface Game {
@@ -17,17 +18,22 @@ const useGames = (searchTerm: string) => {
   const [error, setError] = useState<string>(''); // Typing error as a string
 
   useEffect(() => {
+    const controller = new AbortController();
     apiClient
       .get<FetchGameResponse>('/games', {
         params: {
           search: searchTerm, // dynamically insert the user's search term
+          signal: controller.signal,
         },
       })
       .then(({ data }) => {
         setGames(data.results); // Make sure to check if data structure has `results`
-        console.log(searchTerm);
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        if (err instanceof CanceledError) return;
+        setError(err.message);
+      });
+    return () => controller.abort(); // Cancel the request on cleanup
   }, [searchTerm]);
 
   return { error, games };
