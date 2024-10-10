@@ -2,11 +2,16 @@ import { useEffect, useState } from 'react';
 import apiClient from '../../services/api-services';
 import './games.css';
 
-interface ResultProps {
+interface Game {
   id: number;
   slug: string;
   name: string;
   background_image: string;
+}
+
+interface FetchGameResponse {
+  count: number;
+  results: Game[];
 }
 
 interface GameGrindProps {
@@ -15,12 +20,12 @@ interface GameGrindProps {
 }
 
 const GameGrid: React.FC<GameGrindProps> = ({ searchTerm, darkMode }) => {
-  const [games, setGames] = useState<ResultProps[]>([]); // Typing the games state as an array of ResultProps
+  const [games, setGames] = useState<Game[]>([]); // Typing the games state as an array of ResultProps
   const [error, setError] = useState<string>(''); // Typing error as a string
 
   useEffect(() => {
     apiClient
-      .get('/games', {
+      .get<FetchGameResponse>('/games', {
         params: {
           search: searchTerm, // dynamically insert the user's search term
         },
