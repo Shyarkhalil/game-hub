@@ -1,18 +1,27 @@
 .game-container {
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
 }
-.game-container .game-list {
+ .game-list {
   flex-grow: 1; /*The item can grow and take up available space.*/
   flex-shrink: 1; /*The item can shrink to fit the container if needed.*/
   flex-basis: 100%; /*The item's default size is 100% of the container's width.*/
   list-style: none;
   box-sizing: border-box;
-  padding:10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px;
+  background-color: rgb(34, 34, 48);
 }
+
 .game-list img {
   width: 100%; /* Ensure images take up the full width of the flex item */
   height: auto;
+}
+.game-list  h1 {
+  font-size: 15px;
+  margin: 5px;
 }
 .dark-header  {
   color: white

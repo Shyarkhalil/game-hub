@@ -25,11 +25,9 @@ const MainNav: React.FC<MainNaveProps> = ({ onToggleChange, handleSearch }) => {
           color={isToggled ? 'white' : '#29607b'}
         />
       </div>
-      <div className="navbar-input">
-        <div className="input-container">
-          <Input className="input-game" onChange={handleChange} />
-          <FaSearch className="search-icon" />
-        </div>
+      <div className="input-container">
+        <Input className="input-game" onChange={handleChange} value="Search" />
+        <FaSearch className="search-icon" />
       </div>
       <div className="toggle-button">
         <Input

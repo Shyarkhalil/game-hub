@@ -36,8 +36,8 @@ const GameGrid: React.FC<GameGrindProps> = ({ searchTerm, darkMode }) => {
       <ul className="game-container">
         {games.map((game) => (
           <li key={game.id} className="game-list">
-            <h1 className={darkMode ? 'dark-header' : ''}>{game.name}</h1>
             <img src={game.background_image} alt={game.name} />
+            <h1 className={darkMode ? 'dark-header' : ''}>{game.name}</h1>
           </li>
         ))}
       </ul>
