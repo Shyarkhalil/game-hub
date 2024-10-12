@@ -39,7 +39,9 @@
   color: #cccccc; /* Light gray for placeholder text */
 }
 
-
+input:focus {
+  outline: none;
+}
 /* On small screens, set the width to 40vw */
 @media (max-width: 325px) {
   .input-game {
