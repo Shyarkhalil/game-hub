@@ -32,7 +32,7 @@
   height: 180px; /* Fixed height similar to the expected image size */
   background-color: rgb(54, 54, 68);
 }
-.game-list  h1 {
+.game-list  h1, .game-list span {
   font-size: 15px;
   margin: 5px;
   color:aliceblue
