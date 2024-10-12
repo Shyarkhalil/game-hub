@@ -37,6 +37,10 @@
   margin: 5px;
   color:aliceblue
 }
+
+.game-list span {
+  color: rgb(146, 146, 146);
+}
 .dark-header  {
   color: white
 }

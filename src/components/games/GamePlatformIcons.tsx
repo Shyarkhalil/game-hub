@@ -43,6 +43,11 @@ const GamePlatformIcons: React.FC<GamePlatformIconsProps> = ({
         return null;
     }
   };
+
+  // Add a check for undefined or empty array
+  if (!parentPlatform || !parentPlatform.length) {
+    return null; // Or return a fallback UI
+  }
   return (
     <div>
       {parentPlatform.map(({ platform }) => (
