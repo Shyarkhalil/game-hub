@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa';
 import { MdPhoneIphone } from 'react-icons/md';
 import { SiNintendo } from 'react-icons/si'; // For Nintendo from react-icons/si (simple icons)
+import CriticScore from './CriticScore';
 
 interface Platform {
   id: number;
@@ -17,9 +18,11 @@ interface Platform {
 
 interface GamePlatformIconsProps {
   parentPlatform: { platform: Platform }[];
+  criticScores: number;
 }
 const GamePlatformIcons: React.FC<GamePlatformIconsProps> = ({
   parentPlatform,
+  criticScores,
 }) => {
   const getPlatformIcon = (slug: string) => {
     switch (slug) {
@@ -49,10 +52,12 @@ const GamePlatformIcons: React.FC<GamePlatformIconsProps> = ({
     return null; // Or return a fallback UI
   }
   return (
-    <div>
+    <div className="gamePlatformIcons">
       {parentPlatform.map(({ platform }) => (
         <span key={platform.id}>{getPlatformIcon(platform.slug)}</span>
       ))}
+
+      <CriticScore criticScores={criticScores} />
     </div>
   );
 };

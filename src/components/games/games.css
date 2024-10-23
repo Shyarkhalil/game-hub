@@ -109,4 +109,11 @@
   }
 }
 
+.gamePlatformIcons {
+  display: flex;
+  justify-content: flex-start;
+}
 
+.last-item {
+  margin-left: auto; /* Push this item to the left */
+}

@@ -23,7 +23,10 @@ const GameGrid: React.FC<GameGrindProps> = ({ searchTerm, darkMode }) => {
             <li key={game.id} className="game-list">
               <img src={game.background_image} alt={game.name} />
               <h1 className={darkMode ? 'dark-header' : ''}>{game.name}</h1>
-              <GamePlatformIcons parentPlatform={game.parent_platforms} />
+              <GamePlatformIcons
+                parentPlatform={game.parent_platforms}
+                criticScores={game.metacritic}
+              />
             </li>
           ))}
         </ul>
