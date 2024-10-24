@@ -16,7 +16,6 @@ const CriticScore: React.FC<CriticScoreProps> = ({ criticScores }) => {
       >
         {criticScores}
       </span>
-      ;
     </div>
   );
 };
