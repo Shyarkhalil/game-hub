@@ -27,10 +27,11 @@
   height: auto;
 }
 /* Skeleton for the image area */
+
 .skeleton-photo {
-  width: 100%;
-  height: 180px; /* Fixed height similar to the expected image size */
-  background-color: rgb(54, 54, 68);
+  width: 100%; /* Adjust width as needed */
+  height: 200px; /* Adjust height as needed */
+  background-color: #e0e0e0; /* Lighter background for the loading effect */
 }
 .game-list  h1, .game-list span {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -69,11 +70,6 @@
   animation: pulse 1.5s infinite ease-in-out;
 }
 
-.skeleton-photo {
-  width: 100%; /* Adjust width as needed */
-  height: 200px; /* Adjust height as needed */
-  background-color: #e0e0e0; /* Lighter background for the loading effect */
-}
 
 @keyframes pulse {
   0% {
