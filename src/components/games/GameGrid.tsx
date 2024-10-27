@@ -1,4 +1,5 @@
 import useGames from '../../hooks/useGames';
+import useGenres from '../../hooks/useGenres';
 import GamePlatformIcons from './GamePlatformIcons';
 import './games.css';
 import GamesSkeleton from './GameSkeleton';
@@ -9,13 +10,12 @@ interface GameGrindProps {
 }
 const GameGrid: React.FC<GameGrindProps> = ({ searchTerm, darkMode }) => {
   const { games, error, isLoading } = useGames(searchTerm);
-  console.log(games);
-
+  const { genres } = useGenres();
   return (
     <>
       {error && <h1 className="error-message">{error}</h1>}
-      {!error && games.length === 0 && <p>No games found.</p>}
-      {isLoading ? (
+      {error && games.length === 0 && <p>No games found.</p>}
+      {isLoading && genres.length ? (
         <GamesSkeleton count={games.length || 20} />
       ) : (
         <ul className="game-container">

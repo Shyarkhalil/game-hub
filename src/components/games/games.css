@@ -2,8 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0;
+  width: 100%;
 }
-
 
 .game-list, .skeleton {
   flex-grow: 1; /*The item can grow and take up available space.*/
