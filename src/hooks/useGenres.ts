@@ -18,12 +18,18 @@ const useGenres = () => {
   const [error, setError] = useState<string>(''); // Typing error as a string
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
+    const cachedGenres = localStorage.getItem('genres');
+    if (cachedGenres) {
+      setGenres(JSON.parse(cachedGenres));
+      return; // Skip fetching if cached data is found
+    }
     setLoading(true);
     const controller = new AbortController();
     apiClient
       .get<FetchGenresApiProps>('/genres')
       .then(({ data }) => {
         setGenres(data.results); // Make sure to check if data structure has `results`
+        localStorage.setItem('genres', JSON.stringify(data.results)); // Cache the data
         setLoading(false);
       })
       .catch((err) => {
