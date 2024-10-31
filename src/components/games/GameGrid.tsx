@@ -9,12 +9,12 @@ interface GameGrindProps {
   searchTerm: string;
 }
 const GameGrid: React.FC<GameGrindProps> = ({ searchTerm, darkMode }) => {
-  const { games, error, isLoading } = useGames(searchTerm);
-  const { genres } = useGenres();
+  const { data: games, error, isLoading } = useGames(searchTerm);
+  const { data: genres } = useGenres();
   return (
     <>
       {error && <h1 className="error-message">{error}</h1>}
-      {error && games.length === 0 && <p>No games found.</p>}
+      {!isLoading && games.length === 0 && !error && <p>No games found.</p>}
       {isLoading && genres.length ? (
         <GamesSkeleton count={games.length || 20} />
       ) : (

@@ -3,12 +3,12 @@ interface darkModeProps {
   darkMode: boolean;
 }
 const GenresList: React.FC<darkModeProps> = ({ darkMode }) => {
-  const { genres } = useGenres();
+  const { data } = useGenres();
   return (
     <div style={{ marginRight: '100px' }}>
       <h1>Genres</h1>
       <ul>
-        {genres.map((genre) => (
+        {data.map((genre) => (
           <li
             style={{
               display: 'flex',
