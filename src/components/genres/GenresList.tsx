@@ -1,11 +1,12 @@
 import useGenres from '../../hooks/useGenres';
+import './genres.css';
 interface darkModeProps {
   darkMode: boolean;
 }
 const GenresList: React.FC<darkModeProps> = ({ darkMode }) => {
   const { data } = useGenres();
   return (
-    <div style={{ marginRight: '100px' }}>
+    <div className="genres_list_Div">
       <h1>Genres</h1>
       <ul>
         {data.map((genre) => (

@@ -1,0 +1,10 @@
+
+.genres_list_Div {
+  margin-right: 100px;
+}
+
+@media (max-width: 768px) {
+  .genres_list_Div {
+    display: none;
+  }
+}
