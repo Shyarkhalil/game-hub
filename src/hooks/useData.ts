@@ -6,7 +6,7 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-function useData<T>(endPoint: string, searchTerm: string = '') {
+function useData<T>(endPoint: string, searchTerm?: string) {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<string>('');
   const [isLoading, setLoading] = useState(false);
