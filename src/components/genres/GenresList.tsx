@@ -1,9 +1,7 @@
 import useGenres from '../../hooks/useGenres';
 import './genres.css';
-interface darkModeProps {
-  darkMode: boolean;
-}
-const GenresList: React.FC<darkModeProps> = ({ darkMode }) => {
+
+const GenresList = () => {
   const { data } = useGenres();
   return (
     <div className="genres_list_Div">
@@ -17,6 +15,7 @@ const GenresList: React.FC<darkModeProps> = ({ darkMode }) => {
               alignItems: 'center',
             }}
             key={genre.id}
+            onClick={() => console.log(genre)}
           >
             <img
               src={genre.image_background}

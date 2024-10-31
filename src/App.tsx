@@ -25,7 +25,7 @@ function App() {
         searchTerm={searchTerm}
       />
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <GenresList darkMode={isDarkMode} />
+        <GenresList />
         <GameGrid searchTerm={searchTerm} darkMode={isDarkMode} />
       </div>
     </div>
