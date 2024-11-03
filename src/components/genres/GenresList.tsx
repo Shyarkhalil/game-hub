@@ -1,7 +1,14 @@
 import useGenres from '../../hooks/useGenres';
 import './genres.css';
-
-const GenresList = () => {
+interface Genre {
+  id: number;
+  name: string;
+  slug: string;
+}
+interface GenreProps {
+  onSelectedGenre: (genre: Genre) => void;
+}
+const GenresList: React.FC<GenreProps> = ({ onSelectedGenre }) => {
   const { data } = useGenres();
   return (
     <div className="genres_list_Div">
@@ -15,7 +22,7 @@ const GenresList = () => {
               alignItems: 'center',
             }}
             key={genre.id}
-            onClick={() => console.log(genre)}
+            onClick={() => onSelectedGenre(genre)}
           >
             <img
               src={genre.image_background}

@@ -3,10 +3,15 @@ import GameGrid from './components/games/GameGrid';
 import GenresList from './components/genres/GenresList';
 import MainNav from './components/navbar/MainNav';
 import './styles/App.css';
-
+interface Genre {
+  id: number;
+  name: string;
+  slug: string;
+}
 function App() {
-  const [isDarkMode, setDarkMode] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [isDarkMode, setDarkMode] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const onToggleBackground = () => {
     setDarkMode((prevState) => !prevState);
   };
@@ -25,7 +30,7 @@ function App() {
         searchTerm={searchTerm}
       />
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <GenresList />
+        <GenresList onSelectedGenre={(genre) => setSelectedGenre(genre)} />
         <GameGrid searchTerm={searchTerm} darkMode={isDarkMode} />
       </div>
     </div>
