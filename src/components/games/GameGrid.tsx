@@ -1,5 +1,6 @@
 import useGames from '../../hooks/useGames';
 import useGenres from '../../hooks/useGenres';
+import { Genre } from '../genres/GenresList';
 import GamePlatformIcons from './GamePlatformIcons';
 import './games.css';
 import GamesSkeleton from './GameSkeleton';
@@ -7,9 +8,14 @@ import GamesSkeleton from './GameSkeleton';
 interface GameGrindProps {
   darkMode: boolean;
   searchTerm: string;
+  selectedGenre: Genre | null;
 }
-const GameGrid: React.FC<GameGrindProps> = ({ searchTerm, darkMode }) => {
-  const { data: games, error, isLoading } = useGames(searchTerm);
+const GameGrid: React.FC<GameGrindProps> = ({
+  searchTerm,
+  darkMode,
+  selectedGenre,
+}) => {
+  const { data: games, error, isLoading } = useGames(searchTerm, selectedGenre);
   const { data: genres } = useGenres();
   return (
     <>

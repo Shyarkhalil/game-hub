@@ -1,6 +1,6 @@
 import useGenres from '../../hooks/useGenres';
 import './genres.css';
-interface Genre {
+export interface Genre {
   id: number;
   name: string;
   slug: string;

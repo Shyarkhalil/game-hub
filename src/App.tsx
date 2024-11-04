@@ -31,7 +31,11 @@ function App() {
       />
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <GenresList onSelectedGenre={(genre) => setSelectedGenre(genre)} />
-        <GameGrid searchTerm={searchTerm} darkMode={isDarkMode} />
+        <GameGrid
+          searchTerm={searchTerm}
+          darkMode={isDarkMode}
+          selectedGenre={selectedGenre}
+        />
       </div>
     </div>
   );

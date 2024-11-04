@@ -1,3 +1,4 @@
+import { Genre } from '../components/genres/GenresList';
 import useData from './useData';
 
 interface Platform {
@@ -14,6 +15,13 @@ interface Game {
   metacritic: number;
 }
 
-const useGames = (searchTerm: string) => useData<Game>('/games', searchTerm);
+const useGames = (searchTerm: string, selectedGenre: Genre | null) =>
+  useData<Game>(
+    '/games',
+    {
+      params: { search: searchTerm, genres: selectedGenre?.id },
+    },
+    [selectedGenre?.id]
+  );
 
 export default useGames;
