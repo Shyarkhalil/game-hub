@@ -7,8 +7,12 @@ export interface Genre {
 }
 interface GenreProps {
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
-const GenresList: React.FC<GenreProps> = ({ onSelectedGenre }) => {
+const GenresList: React.FC<GenreProps> = ({
+  selectedGenre,
+  onSelectedGenre,
+}) => {
   const { data } = useGenres();
   return (
     <div className="genres_list_Div">
@@ -33,6 +37,7 @@ const GenresList: React.FC<GenreProps> = ({ onSelectedGenre }) => {
               style={{
                 marginLeft: '15px',
                 fontSize: '13px',
+                fontWeight: genre.id === selectedGenre?.id ? 'bold' : 'normal',
               }}
             >
               {genre.name}
