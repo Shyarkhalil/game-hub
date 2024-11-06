@@ -24,6 +24,7 @@ const GenresList: React.FC<GenreProps> = ({
               display: 'flex',
               margin: '15px 0',
               alignItems: 'center',
+              cursor: 'pointer',
             }}
             key={genre.id}
             onClick={() => onSelectedGenre(genre)}
