@@ -26,7 +26,7 @@ const GameGrid: React.FC<GameGrindProps> = ({
         <GamesSkeleton count={games.length || 20} />
       ) : (
         <div>
-          <PlatformsMenu />
+          {genres.length ? <PlatformsMenu /> : null}
           <ul className="game-container">
             {games.map((game) => (
               <li key={game.id} className="game-list">

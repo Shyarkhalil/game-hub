@@ -64,6 +64,7 @@ input:focus {
   position: relative;
   appearance: none;
   background-color: #ccc;
+  margin-left: 10px;
   border-radius: 20px;
   cursor: pointer;
   outline: none;
@@ -91,6 +92,7 @@ input:focus {
 }
 
 .dark-mode-label{
+  margin-left: 10px;
   align-self: center;
   color: white;
   font-size: 10px;
