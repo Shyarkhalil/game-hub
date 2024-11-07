@@ -1,6 +1,7 @@
 import useGames from '../../hooks/useGames';
 import useGenres from '../../hooks/useGenres';
 import { Genre } from '../genres/GenresList';
+import PlatformsMenu from '../platforms/PlatformsMenu';
 import GamePlatformIcons from './GamePlatformIcons';
 import './games.css';
 import GamesSkeleton from './GameSkeleton';
@@ -24,18 +25,21 @@ const GameGrid: React.FC<GameGrindProps> = ({
       {isLoading && genres.length ? (
         <GamesSkeleton count={games.length || 20} />
       ) : (
-        <ul className="game-container">
-          {games.map((game) => (
-            <li key={game.id} className="game-list">
-              <img src={game.background_image} alt={game.name} />
-              <h1 className={darkMode ? 'dark-header' : ''}>{game.name}</h1>
-              <GamePlatformIcons
-                parentPlatform={game.parent_platforms}
-                criticScores={game.metacritic}
-              />
-            </li>
-          ))}
-        </ul>
+        <div>
+          <PlatformsMenu />
+          <ul className="game-container">
+            {games.map((game) => (
+              <li key={game.id} className="game-list">
+                <img src={game.background_image} alt={game.name} />
+                <h1 className={darkMode ? 'dark-header' : ''}>{game.name}</h1>
+                <GamePlatformIcons
+                  parentPlatform={game.parent_platforms}
+                  criticScores={game.metacritic}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </>
   );

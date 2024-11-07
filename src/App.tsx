@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import GameGrid from './components/games/GameGrid';
 import GenresList from './components/genres/GenresList';
