@@ -21,7 +21,7 @@ const useGames = (searchTerm: string, selectedGenre: Genre | null) =>
     {
       params: { search: searchTerm, genres: selectedGenre?.id },
     },
-    [selectedGenre?.id]
+    [selectedGenre?.id, searchTerm]
   );
 
 export default useGames;
