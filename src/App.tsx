@@ -9,10 +9,18 @@ interface Genre {
   name: string;
   slug: string;
 }
+interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
 function App() {
   const [isDarkMode, setDarkMode] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
   const onToggleBackground = () => {
     setDarkMode((prevState) => !prevState);
   };
@@ -39,6 +47,8 @@ function App() {
           searchTerm={searchTerm}
           darkMode={isDarkMode}
           selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+          onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
         />
       </div>
     </div>

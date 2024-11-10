@@ -1,20 +1,36 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import usePlatform from '../../hooks/usePlatform';
 import './platforms.css';
-const PlatformsMenu = () => {
+interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+interface Props {
+  selectedPlatform: Platform | null;
+  onSelectedPlatform: (platform: Platform) => void;
+}
+const PlatformsMenu: React.FC<Props> = ({
+  onSelectedPlatform,
+  selectedPlatform,
+}) => {
   const { data } = usePlatform();
   return (
     <div style={{ marginTop: '15px' }}>
       <Dropdown>
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-          Platforms
+          {selectedPlatform?.name || 'Platforms'}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
           {data.map((p) => (
             <Dropdown.Item
               key={p.id}
-              onClick={() => console.log(p.name)}
+              onClick={() => {
+                console.log(p);
+
+                onSelectedPlatform(p);
+              }}
               className="dropdown-item"
             >
               {p.name}

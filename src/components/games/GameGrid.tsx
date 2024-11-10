@@ -5,18 +5,30 @@ import PlatformsMenu from '../platforms/PlatformsMenu';
 import GamePlatformIcons from './GamePlatformIcons';
 import './games.css';
 import GamesSkeleton from './GameSkeleton';
-
+interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
 interface GameGrindProps {
   darkMode: boolean;
   searchTerm: string;
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
+  onSelectedPlatform: (platform: Platform) => void;
 }
 const GameGrid: React.FC<GameGrindProps> = ({
   searchTerm,
   darkMode,
   selectedGenre,
+  selectedPlatform,
+  onSelectedPlatform,
 }) => {
-  const { data: games, error, isLoading } = useGames(searchTerm, selectedGenre);
+  const {
+    data: games,
+    error,
+    isLoading,
+  } = useGames(searchTerm, selectedGenre, selectedPlatform);
   const { data: genres } = useGenres();
   return (
     <>
@@ -26,7 +38,12 @@ const GameGrid: React.FC<GameGrindProps> = ({
         <GamesSkeleton count={games.length || 20} />
       ) : (
         <div>
-          {genres.length ? <PlatformsMenu /> : null}
+          {genres.length ? (
+            <PlatformsMenu
+              onSelectedPlatform={onSelectedPlatform}
+              selectedPlatform={selectedPlatform}
+            />
+          ) : null}
           <ul className="game-container">
             {games.map((game) => (
               <li key={game.id} className="game-list">
