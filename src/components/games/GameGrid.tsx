@@ -5,16 +5,11 @@ import PlatformsMenu from '../platforms/PlatformsMenu';
 import GamePlatformIcons from './GamePlatformIcons';
 import './games.css';
 import GamesSkeleton from './GameSkeleton';
-interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 interface GameGrindProps {
   darkMode: boolean;
   searchTerm: string;
   gameQuery: GameQuery;
-  onSelectedPlatform: (platform: Platform) => void;
+  onSelectedPlatform: (platform: GameQuery['platform']) => void;
 }
 const GameGrid: React.FC<GameGrindProps> = ({
   searchTerm,

@@ -21,8 +21,6 @@ const PlatformsMenu: React.FC<Props> = ({ onSelectedPlatform, gameQuery }) => {
             <Dropdown.Item
               key={p.id}
               onClick={() => {
-                console.log(p);
-
                 onSelectedPlatform(p);
               }}
               className="dropdown-item"
