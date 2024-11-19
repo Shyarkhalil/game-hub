@@ -1,6 +1,6 @@
+import { GameQuery } from '../../App';
 import useGames from '../../hooks/useGames';
 import useGenres from '../../hooks/useGenres';
-import { Genre } from '../genres/GenresList';
 import PlatformsMenu from '../platforms/PlatformsMenu';
 import GamePlatformIcons from './GamePlatformIcons';
 import './games.css';
@@ -13,22 +13,16 @@ interface Platform {
 interface GameGrindProps {
   darkMode: boolean;
   searchTerm: string;
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
   onSelectedPlatform: (platform: Platform) => void;
 }
 const GameGrid: React.FC<GameGrindProps> = ({
   searchTerm,
   darkMode,
-  selectedGenre,
-  selectedPlatform,
+  gameQuery,
   onSelectedPlatform,
 }) => {
-  const {
-    data: games,
-    error,
-    isLoading,
-  } = useGames(searchTerm, selectedGenre, selectedPlatform);
+  const { data: games, error, isLoading } = useGames(searchTerm, gameQuery);
   const { data: genres } = useGenres();
   return (
     <>
@@ -41,7 +35,7 @@ const GameGrid: React.FC<GameGrindProps> = ({
           {genres.length ? (
             <PlatformsMenu
               onSelectedPlatform={onSelectedPlatform}
-              selectedPlatform={selectedPlatform}
+              gameQuery={gameQuery}
             />
           ) : null}
           <ul className="game-container">

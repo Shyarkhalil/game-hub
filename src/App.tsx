@@ -14,13 +14,14 @@ interface Platform {
   name: string;
   slug: string;
 }
+export interface GameQuery {
+  platform: Platform | null;
+  genre: Genre | null;
+}
 function App() {
   const [isDarkMode, setDarkMode] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null
-  );
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const onToggleBackground = () => {
     setDarkMode((prevState) => !prevState);
   };
@@ -40,15 +41,24 @@ function App() {
       />
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <GenresList
-          selectedGenre={selectedGenre}
-          onSelectedGenre={(genre) => setSelectedGenre(genre)}
+          selectedGenre={gameQuery.genre}
+          onSelectedGenre={(genre) =>
+            setGameQuery((prevQuery) => ({
+              ...prevQuery,
+              genre: genre,
+            }))
+          }
         />
         <GameGrid
           searchTerm={searchTerm}
           darkMode={isDarkMode}
-          selectedGenre={selectedGenre}
-          selectedPlatform={selectedPlatform}
-          onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
+          gameQuery={gameQuery}
+          onSelectedPlatform={(platform) =>
+            setGameQuery((prevQuery) => ({
+              ...prevQuery,
+              platform: platform,
+            }))
+          }
         />
       </div>
     </div>

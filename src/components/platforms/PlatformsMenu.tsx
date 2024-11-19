@@ -1,25 +1,19 @@
 import Dropdown from 'react-bootstrap/Dropdown';
+import { GameQuery } from '../../App';
 import usePlatform from '../../hooks/usePlatform';
 import './platforms.css';
-interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+
 interface Props {
-  selectedPlatform: Platform | null;
-  onSelectedPlatform: (platform: Platform) => void;
+  gameQuery: GameQuery;
+  onSelectedPlatform: (platform: GameQuery['platform']) => void;
 }
-const PlatformsMenu: React.FC<Props> = ({
-  onSelectedPlatform,
-  selectedPlatform,
-}) => {
+const PlatformsMenu: React.FC<Props> = ({ onSelectedPlatform, gameQuery }) => {
   const { data } = usePlatform();
   return (
     <div style={{ marginTop: '15px' }}>
       <Dropdown>
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-          {selectedPlatform?.name || 'Platforms'}
+          {gameQuery.platform?.name || 'Platforms'}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
